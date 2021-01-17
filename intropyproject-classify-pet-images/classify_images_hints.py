@@ -13,7 +13,7 @@
 #             and as in_arg.dir for function call within main. 
 #            -The results dictionary as results_dic within classify_images 
 #             function and results for the functin call within main.
-#            -The CNN model architecture as model within classify_images function
+#            -The CNN model architecture as model wihtin classify_images function
 #             and in_arg.arch for the function call within main. 
 #           This function uses the extend function to add items to the list 
 #           that's the 'value' of the results dictionary. You will be adding the
@@ -67,6 +67,7 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """
+    
     # Process all files in the results_dic - use images_dir to give fullpath
     # that indicates the folder and the filename (key) to be used in the 
     # classifier function
@@ -79,7 +80,9 @@ def classify_images(images_dir, results_dic, model):
        #  Runs classifier function to classify the images classifier function 
        # inputs: path + filename  and  model, returns model_label 
        # as classifier label
-       model_label = ""
+       image_path = image_dir + "/" + key
+ 
+       model_label = classifier(image_path , model)
 
        # TODO: 3b. BELOW REPLACE pass with CODE to process the model_label to 
        #           convert all characters within model_label to lowercase 
@@ -89,7 +92,8 @@ def classify_images(images_dir, results_dic, model):
        #
        # Processes the results so they can be compared with pet image labels
        # set labels to lowercase (lower) and stripping off whitespace(strip)
-       pass
+    
+       lower_model_label = model_label.lower().strip()
               
        # defines truth as pet image label 
        truth = results_dic[key][0]
